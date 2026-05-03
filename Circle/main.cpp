@@ -6,14 +6,14 @@ int main() {
 	Circle c2{1};
 
 	if (c1 == c2) {
-		cout << "equal" << endl;
+		std::cout << "equal" << std::endl;
 	}
 	else {
-		cout << "unequal" << endl;
+		std::cout << "unequal" << std::endl;
 	}
 
 	c1 += 2;
 
-	cout << c1;
+	std::cout << c1;
 }
 

@@ -1,60 +1,62 @@
 #include "Circle.h"
+#include <iostream>
 
 void Circle::setRadius(double r) {
-	radius = r;
+    radius = r;
 }
 
 double Circle::getRadius() {
-	return radius;
+    return radius;
 }
 
 double Circle::getArea() const {
-	return PI * radius * radius;
+    return 3.14159265359 * radius * radius;
 }
 
 double Circle::getDiameter() const {
-	return 2 * radius;
+    return 2 * radius;
 }
+
+
 bool operator==(const Circle& c1, const Circle& c2) {
-	return c1.radius == c2.radius;
+    return c1.radius == c2.radius;
 }
 
 bool Circle::operator>(const Circle& c1) const {
-	return this->radius > c1.radius;
+    return this->radius > c1.radius;
 }
+
 
 Circle& Circle::operator+=(double cm) {
-	radius += cm;
-	area = PI * radius * radius;
-	diameter = radius * 2;
-	return *this;
+    radius += cm;
+    return *this;
 }
 
+
 Circle& Circle::operator-=(double cm) {
-	radius -= cm;
-	area = PI * radius * radius;
-	diameter = radius * 2;
-	return *this;
+    radius -= cm;
+    if (radius < 0)
+        radius = 0;
+    return *this;
 }
+
 
 Circle::Circle() : Circle(0) {}
 
-Circle::Circle(double r) : radius{ r } {
-	area = PI * radius * radius;
-	diameter = radius * 2;
-}
-
-ostream& operator<<(ostream& out, const Circle& c) {
-	out << "diameter: " << c.diameter << " " << "radius: " << c.radius << " " << "area: " << c.area << endl;
-	return out;
-}
+Circle::Circle(double r) : radius{ r } {}
 
 Circle::Circle(Circle& obj) {
-	radius = obj.radius;
-	diameter = obj.diameter;
-	area = obj.area;
+    radius = obj.radius;
+}
+
+
+std::ostream& operator<<(std::ostream& out, const Circle& c) {
+    out << "diameter: " << c.getDiameter()
+        << " radius: " << c.radius
+        << " area: " << c.getArea();
+    return out;
 }
 
 Circle::~Circle() {
-	cout << "destructed" << endl;;
+    std::cout << "destructed" << std::endl;
 }

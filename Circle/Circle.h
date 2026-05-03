@@ -1,33 +1,28 @@
 #pragma once
 #include <iostream>
-using namespace std;
 
 class Circle
 {
-	double radius;
-	double diameter;
-	double area;
-	const double PI = 3.14159265359;
+    double radius;
 
 public:
-	void setRadius(double r);
+    void setRadius(double r);
+    double getRadius();
 
-	double getRadius();
-	double getDiameter()const;
-	double getArea()const;
+    double getDiameter() const;
+    double getArea() const;
 
-	friend bool operator==(const Circle& c1, const Circle& c2);
-	bool operator>(const Circle& c1) const;
+    friend bool operator==(const Circle& c1, const Circle& c2);
+    bool operator>(const Circle& c1) const;
 
-	Circle& operator+=(double cm);
-	Circle& operator-=(double cm);
+    Circle& operator+=(double cm);
+    Circle& operator-=(double cm);
 
-	friend ostream& operator<<(ostream& out, const Circle& c);
+    friend std::ostream& operator<<(std::ostream& out, const Circle& c);
 
-	Circle();
-	Circle(double r);
-	Circle(Circle& obj);
-
-	~Circle();
+    Circle();
+    Circle(double r);
+    Circle(Circle& obj);
+    ~Circle();
 };
 
